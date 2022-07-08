@@ -12,15 +12,13 @@ const initialState = {
 const gameReducer = (state, action) => {
   switch (action.type) {
     case "Click": {
-      // const { board, xIsNext } = state; // destructuring
-      // const { index, winner } = action.payload;
-      // if (winner || board[index]) return state; // return lại cái state hiện tại còn cái nextState mới là cái dùng để update từ state lên nextState
-      // const nextState = JSON.parse(JSON.stringify(state)); // clone state
-      // nextState.xIsNext = !xIsNext;
-      // nextState.board[index] = xIsNext ? "X" : "O";
-      // return nextState;
-      console.log("It's working");
-      break;
+      const { board, xIsNext } = state; // destructuring
+      const { index, winner } = action.payload;
+      if (winner || board[index]) return state; // return lại cái state hiện tại còn cái nextState mới là cái dùng để update từ state lên nextState
+      const nextState = JSON.parse(JSON.stringify(state)); // clone state
+      nextState.xIsNext = !xIsNext;
+      nextState.board[index] = xIsNext ? "X" : "O";
+      return nextState;
     }
     // console.log(state, action.payload);
     case "Reset": {
